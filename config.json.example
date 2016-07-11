@@ -1,0 +1,6 @@
+{
+  "worldDirectory": "C:/path/to/world/",
+  "modelsDirectory": "C:/path/to/folder/with/dumped/models/",
+  "texturesDirectory": "C:/path/to/folder/with/dumped/textures/",
+  "outputDirectory": "C:/path/to/output/folder/"
+}

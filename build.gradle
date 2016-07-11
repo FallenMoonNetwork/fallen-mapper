@@ -1,0 +1,35 @@
+group 'net.thefallenmoon.mapper'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'scala'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url = "https://oss.sonatype.org/content/groups/public/"
+    }
+}
+
+dependencies {
+    compile 'com.flowpowered:flow-nbt:1.0.1-SNAPSHOT'
+    compile 'org.scala-lang:scala-library:2.11.8'
+    compile 'org.scala-lang:scala-reflect:2.11.8'
+    compile 'org.rogach:scallop_2.11:1.0.1'
+    compile 'com.github.pathikrit:better-files_2.11:2.16.0'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.7.2'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.2'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.2'
+    compile 'com.fasterxml.jackson.module:jackson-module-scala_2.11:2.7.2'
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'net.thefallenmoon.mapper.Main'
+    }
+    baseName = "patcher"
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
